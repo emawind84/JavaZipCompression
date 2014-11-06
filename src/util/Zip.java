@@ -28,7 +28,6 @@ public class Zip {
 	 * and expects archives to be in that encoding when reading them.
 	 * <p>
 	 * The Windows "compressed folder" can't be used if file names are incompatible with the encoding of the target platform
-	 * <p>
 	 * 
 	 * @param files an array of {@link File} objects
 	 * @return the file zip generated
@@ -80,6 +79,23 @@ public class Zip {
 		}
 		
 		return fzip;
+	}
+	
+	/**
+	 * Create a zip file given an array of file path strings.
+	 * 
+	 * @param sfiles an array of file path strings
+	 * @return the file zip generated
+	 * @throws IOException
+	 * 
+	 * @see {@link #doZip(File[])}
+	 */
+	public static File doZip(String[] sfiles) throws IOException {
+		File[] files = new File[sfiles.length];
+		for (int i = 0; i < sfiles.length; i++) {
+			files[i] = new File(sfiles[i]);
+		}
+		return doZip(files);
 	}
 	
 }
